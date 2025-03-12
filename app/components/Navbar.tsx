@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import headerImg from "../../public/images/sm-abdi.svg";
-import useAppContext from "../context/appContext";
+//import useAppContext from "../context/appContext";
 
 export function Navbar() {
   //const { signOut, session } = useAppContext();
