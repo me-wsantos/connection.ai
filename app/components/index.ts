@@ -1,5 +1,4 @@
 export * from "./ChatContainer";
-export * from "./DropResourceAnalysis";
 export * from "./GptMessage";
 export * from "./GptMessageAnalysis";
 export * from "./MyMessage";
