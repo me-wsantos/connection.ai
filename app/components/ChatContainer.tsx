@@ -29,11 +29,11 @@ export const ChatContainer = () => {
   }
 
   return (
-    <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-150px)] p-4">
+    <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-150px)] p-4 border">
       <div className="chat-messages">
         <div className="flex flex-col">
-          <GptMessage text={`Olá, para análise de folha, selecione a data inicial, a data final e clique no botão "Analisar".`} />
-          <GptMessage text={`Use o campo abaixo para me enviar mensagens e fazer perguntas".`} />
+          <GptMessage text={`Olá, faça o upload de um currículo para que eu possa analisar.`} />
+          {/* <GptMessage text={`Use o campo abaixo para me enviar comandos e fazer perguntas".`} /> */}
 
           {
             messages.map((message, index) => (
@@ -54,7 +54,7 @@ export const ChatContainer = () => {
 
       <TextMessageBox
         onSendMessage={handlePost}
-        placeholder="Escreva aqui sua mensagem"
+        placeholder="Digite sua mensagem..."
         disableCorrections
       />
     </div>

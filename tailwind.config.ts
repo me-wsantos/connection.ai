@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "custom-blue": "#183EFF",
-        "custom-blue-50": "#e1e5f7",
+        "custom-blue": "#133D63",
+        "custom-blue-light": "#2a5072",
       },
     },
   },
