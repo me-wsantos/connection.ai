@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { BsCardChecklist } from "react-icons/bs"
+import { SlGraph } from "react-icons/sl";
 import { FaRegUser } from "react-icons/fa"
 import { HiOutlineHome } from "react-icons/hi2"
-import { ImUsers } from "react-icons/im"
+import { GoChecklist } from "react-icons/go";
 import { MdOutlineUploadFile } from "react-icons/md"
 
 const icons = [
@@ -17,15 +17,15 @@ const icons = [
     text: "Upload currículo"
   },
   {
-    icon: <FaRegUser size={26} className="mr-2 text-white mb-2" />,
+    icon: <FaRegUser size={24} className="mr-2 text-white mb-2" />,
     text: "Perfil do candidato"
   },
   {
-    icon: <BsCardChecklist size={26} className="mr-2 text-white mb-2" />,
+    icon: <SlGraph size={26} className="mr-2 text-white mb-2" />,
     text: "Plano de carreira"
   },
   {
-    icon: <ImUsers size={26} className="mr-2 text-white mb-2" />,
+    icon: <GoChecklist size={26} className="mr-2 text-white mb-2" />,
     text: "Questioário de entrevista"
   }
 ]
