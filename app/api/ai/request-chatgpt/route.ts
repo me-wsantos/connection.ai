@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import { extractJsonMarkdown } from '@/app/utils/extractJsonMarkdown';
 
 export async function POST(request: NextRequest) {
-  const { llm, backstory, goal, dataAnalysis } = await request.json();
+  const { llm, backstory, goal } = await request.json();
   const prompt = backstory + " " + goal;
 
   const openai = new OpenAI({

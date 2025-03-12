@@ -2,7 +2,7 @@ import { analysisResources } from "../data/analysisResources";
 
 export const RequestAnalystAgent = async (prompt: string) => {
   const { chatGPT4o } = analysisResources();
-  const role = "Analista de requisições";
+  //const role = "Analista de requisições";
   const llm = chatGPT4o;
   const backstory = `Você é um analista de requisitos hábil em identificar as necessidades específicas dos usuários.`;
   const goal = `Analise a seguinte pergunta: '${prompt}' e identifique o que ele está solicitando. 

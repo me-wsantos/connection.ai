@@ -1,6 +1,6 @@
 "use client"
 import { RequestAnalystAgent, IdentifyNameAgent } from "../agents";
-import { proventosService } from "./";
+//import { proventosService } from "./";
 
 export const chatService = async ({ prompt }: any) => {
   console.log("prompt", prompt);

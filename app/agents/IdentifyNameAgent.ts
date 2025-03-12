@@ -2,7 +2,7 @@ import { analysisResources } from "../data/analysisResources";
 
 export const IdentifyNameAgent = async (prompt: string) => {
   const { chatGPT4o } = analysisResources();
-  const role = "Agente Onomástico";
+  //const role = "Agente Onomástico";
   const llm = chatGPT4o;
   const backstory = `Você é um Agente Onomástico reconhecido por sua grande expertise nessa área.`;
   /*   const goal = `Analise a seguinte pergunta: '${prompt}' e extraia apenas o nome da pessoa. 

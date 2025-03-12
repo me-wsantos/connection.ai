@@ -2,10 +2,9 @@
 import Image from "next/image";
 import headerImg from "../../public/images/sm-abdi.svg";
 import useAppContext from "../context/appContext";
-import { AiOutlineLogout } from "react-icons/ai";
 
 export function Navbar() {
-  const { signOut, session } = useAppContext();
+  //const { signOut, session } = useAppContext();
 
   /* const btnLogout = () => {
     if (Object.keys(session || {}).length) {
