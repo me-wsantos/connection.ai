@@ -1,4 +1,4 @@
-const { AzureOpenAI } = require("openai");  
+import { AzureOpenAI } from "openai";
 const dotenv = require("dotenv");  
   
 dotenv.config();  
