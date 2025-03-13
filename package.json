@@ -11,7 +11,9 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "@prisma/client": "^5.22.0",
+    "axios": "^1.8.3",
     "convert-csv-to-json": "^2.49.0",
+    "dotenv": "^16.4.7",
     "next": "15.0.2",
     "openai": "^4.71.0",
     "react": "19.0.0-rc-02c0e824-20241028",

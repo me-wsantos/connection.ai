@@ -38,9 +38,6 @@ export interface IAppContext {
   setAnalysisPeriod(value: string): void
   isLoading: boolean
   setIsLoading(value:boolean):void
-  signIn(value:IUser):object
-  signOut():void
-  session: IUser
 }
 
 export interface IAgents {

@@ -5,26 +5,24 @@ import { chatService } from "../services";
 import { IMessage } from "../interfaces";
 
 export const ChatContainer = () => {
-  const { dataAnalysis, messages, setMessages, isLoading, setIsLoading } = useAppContext();
+  const { messages, setMessages, isLoading, setIsLoading } = useAppContext();
 
-  const handlePost = async(text: string) => {
+  const handlePost = async (text: string) => {
     setIsLoading(true)
     setMessages((prev: IMessage[]) => [...prev, { text, isGpt: false }])
 
-    const { data } = await chatService({
-      prompt: text,
-      dataAnalysis,
-    })
+    const { data } = await chatService({ prompt: text })
 
-    console.log("data", data)
+    console.log("resposonse", data)
 
     if (data == undefined) {
-      console.log("Não foi possível analisar a requisição");
+      setMessages((prev: IMessage[]) => [...prev, {
+        text: "Desculpe, não foi possível responder a sua pergunta. Tente novamente.",
+        isGpt: true
+      }])
     } else {
-      console.log("data", data);
+      setMessages((prev: IMessage[]) => [...prev, { text: data, isGpt: true }])
     }
-
-    setMessages((prev: IMessage[]) => [...prev, { text: data, isGpt: true }])
     setIsLoading(false)
   }
 
@@ -48,7 +46,6 @@ export const ChatContainer = () => {
               <TypingLoader className="fade-in" />
             )
           }
-
         </div>
       </div>
 
