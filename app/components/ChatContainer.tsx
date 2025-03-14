@@ -17,8 +17,8 @@ export const ChatContainer = () => {
 
     if (data == undefined) {
       setMessages((prev: IMessage[]) => [...prev, {
-        text: "Desculpe, não foi possível responder a sua pergunta. Tente novamente.",
-        isGpt: true
+      text: "Sorry, it was not possible to answer your question. Please try again.",
+      isGpt: true
       }])
     } else {
       setMessages((prev: IMessage[]) => [...prev, { text: data, isGpt: true }])
@@ -29,30 +29,30 @@ export const ChatContainer = () => {
   return (
     <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-150px)] p-4 border">
       <div className="chat-messages">
-        <div className="flex flex-col">
-          <GptMessage text={`Olá, faça o upload de um currículo para que eu possa analisar.`} />
-          {/* <GptMessage text={`Use o campo abaixo para me enviar comandos e fazer perguntas".`} /> */}
+      <div className="flex flex-col">
+        <GptMessage text={`Hello, please upload a resume so I can analyze it.`} />
+        {/* <GptMessage text={`Use the field below to send me commands and ask questions.`} /> */}
 
-          {
-            messages.map((message, index) => (
-              message.isGpt
-                ? (message.isAnalysis ? <GptMessageAnalysis key={index} /> : <GptMessage key={index} text={message.text} />)
-                : (<MyMessage key={index} text={message.text} />)
-            ))
-          }
+        {
+        messages.map((message, index) => (
+          message.isGpt
+        ? (message.isAnalysis ? <GptMessageAnalysis key={index} /> : <GptMessage key={index} text={message.text} />)
+        : (<MyMessage key={index} text={message.text} />)
+        ))
+        }
 
-          {
-            isLoading && (
-              <TypingLoader className="fade-in" />
-            )
-          }
-        </div>
+        {
+        isLoading && (
+          <TypingLoader className="fade-in" />
+        )
+        }
+      </div>
       </div>
 
       <TextMessageBox
-        onSendMessage={handlePost}
-        placeholder="Digite sua mensagem..."
-        disableCorrections
+      onSendMessage={handlePost}
+      placeholder="Type your message..."
+      disableCorrections
       />
     </div>
   )

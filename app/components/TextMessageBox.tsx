@@ -43,7 +43,7 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
 
       <div className="ml-4">
         <button className="flex justify-between items-center bg-custom-blue px-8 py-2 rounded-xl">
-          <span className="text-white mr-2">Enviar</span>
+          <span className="text-white mr-2">Send</span>
           <IoIosSend color="white" size={20} />
         </button>
       </div>

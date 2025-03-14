@@ -1,11 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import useAppContext from "../context/appContext";
 import { SlGraph } from "react-icons/sl";
-import { FaRegUser } from "react-icons/fa"
-import { HiOutlineHome } from "react-icons/hi2"
+import { FaRegUser } from "react-icons/fa";
+import { HiOutlineHome } from "react-icons/hi2";
 import { GoChecklist } from "react-icons/go";
-import { MdOutlineUploadFile } from "react-icons/md"
+import { MdOutlineUploadFile } from "react-icons/md";
 
 const icons = [
   {
@@ -14,32 +14,32 @@ const icons = [
   },
   {
     icon: <MdOutlineUploadFile size={28} className="mr-2 text-white mb-2" />,
-    text: "Upload currículo"
+    text: "Upload Resume"
   },
   {
     icon: <FaRegUser size={24} className="mr-2 text-white mb-2" />,
-    text: "Perfil do candidato"
+    text: "Candidate Profile"
   },
   {
     icon: <SlGraph size={26} className="mr-2 text-white mb-2" />,
-    text: "Plano de carreira"
+    text: "Career Plan"
   },
   {
     icon: <GoChecklist size={26} className="mr-2 text-white mb-2" />,
-    text: "Questioário de entrevista"
+    text: "Interview Questionnaire"
   }
 ]
 
 export function Sidebar() {
-  const [active, setActive] = useState(0);
+  const { moduleActive, setModuleActive } = useAppContext();
 
   const renderMenu = (icon: React.ReactNode, text: string, index: number) => {
 
     return (
       <div 
         key={text}
-        className={`h-20 px-8 flex items-center justify-start mt-0 ${active === index ? "bg-blue-500" : "hover:bg-custom-blue-light"} cursor-pointer`}
-        onClick={() => setActive(index)}
+        className={`h-20 px-8 flex items-center justify-start mt-0 ${moduleActive === index ? "bg-blue-500" : "hover:bg-custom-blue-light"} cursor-pointer`}
+        onClick={() => setModuleActive(index)}
       >
         {icon}
         <span className="text-white">{text}</span>
@@ -51,7 +51,7 @@ export function Sidebar() {
     <div className="h-screen flex flex-col justify-between items-end max-w-7xl mx-auto">
       <nav className="hidden sm:flex flex-col ml-0 w-[400px] h-full bg-custom-blue px-0 pt-4">
 
-        <h4 className="font-bold text-lg text-white mt-4 mb-48  text-center lg:text-xl">
+        <h4 className="font-bold text-lg text-white mt-4 mb-28  text-center lg:text-xl">
           Connection.ai
         </h4>
 

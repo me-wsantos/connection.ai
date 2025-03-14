@@ -1,10 +1,13 @@
 "use client"
 import Link from "next/link";
-import { Sidebar, ChatContainer } from "./components";
+import useAppContext from "./context/appContext";
+import { Sidebar, ChatContainer, UploadResume } from "./components";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
 export default function Home() {
+  const { moduleActive } = useAppContext();
+
   return (
     <>
       <main className="h-screen w-full flex flex-row mt-0 bg-white">
@@ -35,7 +38,8 @@ export default function Home() {
 
           <div className="flex flex-row h-full mt-6">
             <div className="flex flex-col flex-auto h-full p-1">
-              <ChatContainer />
+              { moduleActive == 0 && <ChatContainer />}
+              { moduleActive == 1 && <UploadResume />}
             </div>
           </div>
         </section>

@@ -9,6 +9,7 @@ export const AppContextProvider = ({ children }: any) => {
   const [messages, setMessages] = useState<IMessage[]>([])
   const [analysisPeriod, setAnalysisPeriod] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const [moduleActive, setModuleActive] = useState(0)
 
   return (
     <AppContext.Provider value={{ 
@@ -16,6 +17,7 @@ export const AppContextProvider = ({ children }: any) => {
       messages, setMessages,
       analysisPeriod, setAnalysisPeriod,
       isLoading, setIsLoading,
+      moduleActive, setModuleActive
     }}>
       {children}
     </AppContext.Provider>

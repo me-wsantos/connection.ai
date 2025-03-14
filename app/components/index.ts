@@ -6,3 +6,4 @@ export * from "./Sidebar";
 export * from "./TextMessageBox";
 export * from "./loaders/TypingLoader"
 export * from "./loaders/WaitButton"
+export * from "./UploadResume"

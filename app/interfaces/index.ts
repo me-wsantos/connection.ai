@@ -38,6 +38,8 @@ export interface IAppContext {
   setAnalysisPeriod(value: string): void
   isLoading: boolean
   setIsLoading(value:boolean):void
+  moduleActive: number,
+  setModuleActive(value: number): void
 }
 
 export interface IAgents {
