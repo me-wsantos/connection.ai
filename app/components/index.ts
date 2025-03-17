@@ -7,3 +7,4 @@ export * from "./TextMessageBox";
 export * from "./loaders/TypingLoader"
 export * from "./loaders/WaitButton"
 export * from "./UploadResume"
+export * from "./Profile"

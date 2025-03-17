@@ -11,7 +11,7 @@ export const UploadResume = () => {
   const [message, setMessage] = useState({ type: "default", description: "" });
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setModuleActive } = useAppContext();
+  const { setModuleActive, setProfile } = useAppContext();
 
   const handleChangeFile = (e: any) => {
     setIsUploaded(false);
@@ -49,6 +49,8 @@ export const UploadResume = () => {
     if (result.status === "success") {
       setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
       setIsUploaded(true);
+      setProfile(result.data);
+      console.log(result.data);
     }
 
     setIsLoading(false);

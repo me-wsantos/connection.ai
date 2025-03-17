@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import useAppContext from "./context/appContext";
-import { Sidebar, ChatContainer, UploadResume } from "./components";
+import { Sidebar, ChatContainer, UploadResume, Profile } from "./components";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
@@ -40,6 +40,7 @@ export default function Home() {
             <div className="flex flex-col flex-auto h-full p-1">
               { moduleActive == 0 && <ChatContainer />}
               { moduleActive == 1 && <UploadResume />}
+              { moduleActive == 2 && <Profile />}
             </div>
           </div>
         </section>

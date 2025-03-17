@@ -40,6 +40,8 @@ export interface IAppContext {
   setIsLoading(value:boolean):void
   moduleActive: number,
   setModuleActive(value: number): void
+  profile: any,
+  setProfile(value: any): void
 }
 
 export interface IAgents {
