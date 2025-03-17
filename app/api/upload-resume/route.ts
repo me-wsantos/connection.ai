@@ -25,8 +25,8 @@ export async function POSTOLD(request: NextRequest) {
       cv: pdfBase64
     }
 
-    const azureUrl = process.env.AZURE_URL || ""
-    const result = await axios.post(azureUrl, resume, {
+    const serviceUrl = process.env.AZURE_URL || ""
+    const result = await axios.post(serviceUrl, resume, {
       headers: { 'Content-Type': 'application/json' }
     });
 
