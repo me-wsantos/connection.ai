@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
-import axios from "axios";
+import { NextResponse } from "next/server";
+//import axios from "axios";
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-export async function POSTOLD(request: NextRequest) {
+/* export async function POSTOLD(request: NextRequest) {
 
   const formData = await request.formData();
 
@@ -36,7 +36,7 @@ export async function POSTOLD(request: NextRequest) {
     console.log(e)
     return NextResponse.json({ status: "fail", error: e });
   }
-}
+} */
 
 export async function POST() {
 
