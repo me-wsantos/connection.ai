@@ -25,7 +25,7 @@ export async function POSTOLD(request: NextRequest) {
       cv: pdfBase64
     }
 
-    const azureUrl = "https://connectiafunction.azurewebsites.net/api/cv_info?code=eM9wYMVOvhmsSTsj9Rm6ADobUS7tVe3e9BfQ7c04sPe1AzFuwl7pVw=="
+    const azureUrl = process.env.AZURE_URL || ""
     const result = await axios.post(azureUrl, resume, {
       headers: { 'Content-Type': 'application/json' }
     });
