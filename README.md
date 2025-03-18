@@ -1,6 +1,6 @@
 # Connection.ai - Inteligência Artificial para Recrutamento e Desenvolvimento Profissional
 
-![capa]()
+![capa](https://github.com/devcaiada/connection.ai/blob/main/assets/capa.jpg?raw=true)
 
 A *Connection.ai* é uma inovadora plataforma de inteligência artificial destinada a transformar a forma como analisamos currículos e preparamos candidatos para o mercado de trabalho. O projeto é guiado pelos princípios de **imparcialidade e inclusividade**, garantindo que todos os candidatos sejam avaliados de forma justa e equitativa, sem distinção com base em deficiência ou qualquer outro critério discriminatório.
 
