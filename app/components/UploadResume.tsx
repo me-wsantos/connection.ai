@@ -45,12 +45,15 @@ export const UploadResume = () => {
     });
 
     const result = await response.json();
+    console.log(JSON.parse(result.data));
 
-    if (result.status === "success") {
+    if (result.status === "fail") {
+      setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
+    } else {
       setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
       setIsUploaded(true);
-      setProfile(result.data);
-      console.log(result.data);
+      setProfile(JSON.parse(result.data));
+      //console.log(result.data);
     }
 
     setIsLoading(false);

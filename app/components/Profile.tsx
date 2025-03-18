@@ -6,6 +6,21 @@ import { IoMdArrowDropright } from "react-icons/io";
 export const Profile = () => {
   const { profile } = useAppContext();
 
+  const listSkills = (skills: string[]) => {
+    return skills.map((skill, index) => {
+      return <span key={index}>{skill}, </span>
+    })
+  }
+  
+  const listProfessionalExperience = (data: object) => {
+    return Object.entries(data).map(([key, value]) => {
+
+      return <div key={key}>
+        <strong className="text-black">{key}: </strong>{value}
+      </div>
+    })
+  }
+
   return (
     <div className="flex flex-col flex-shrink-0 rounded-2xl h-[calc(100vh-150px)] p-4">
       <div className="upload-section ">
@@ -22,19 +37,19 @@ export const Profile = () => {
               <div className="min-w-[70%] pr-12">
                 <div className="pb-2">
                   <span className="font-semibold mr-2">Name:</span>
-                  <span>{profile.name.value}</span>
+                  <span>{profile.Nome}</span>
                 </div>
                 <div className="py-2">
                   <span className="font-semibold mr-2">Address:</span>
-                  <span>{profile.endereco.value}</span>
+                  <span>{profile.Endereço}</span>
                 </div>
                 <div className="py-2">
                   <span className="font-semibold mr-2">E-mail:</span>
-                  <span>{profile.email.value}</span>
+                  <span>{profile.Email}</span>
                 </div>
                 <div className="py-2">
                   <span className="font-semibold mr-2">Phone:</span>
-                  <span>{profile.telefone.value}</span>
+                  <span>{profile.Telefone}</span>
                 </div>
 
                 <div className="py-2 flex flex-col pr-2 mt-4">
@@ -42,7 +57,7 @@ export const Profile = () => {
                     <IoMdArrowDropright size={20} className="ml-[-.5rem] p-0" />
                     <span className="text-lg font-semibold mx-1">Skills</span>
                   </div>
-                  <span>{profile.skills.value}</span>
+                  <span>{ listSkills(profile.Skills) }</span>
                 </div>
 
                 <div className="py-2 flex flex-col pr-2 mt-4">
@@ -50,13 +65,22 @@ export const Profile = () => {
                     <IoMdArrowDropright size={20} className="ml-[-.5rem] p-0" />
                     <span className="text-lg font-semibold mx-1">Professional experience</span>
                   </div>
-                  <span>{profile.experiencia.value}</span>
+                  <div className="pl-4">{ 
+                      profile.Experiência.map((item, index) => (
+                        <div 
+                          key={index}
+                          className="flex flex-col mb-2 border-b-2 pb-2"
+                        >
+                          {listProfessionalExperience(item)}
+                        </div>
+                      )) 
+                    }</div>
                 </div>
               </div>
 
               <div className="flex flex-col">
                 <span className="font-bold mb-2">Resume</span>
-                <span>{profile.resumo.value}</span>
+                <span>{profile.Resumo}</span>
               </div>
             </div>
           </section>
