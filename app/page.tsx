@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import useAppContext from "./context/appContext";
-import { Sidebar, ChatContainer, UploadResume, Profile } from "./components";
+import { Sidebar, ChatContainer, Profile } from "./components";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
@@ -10,10 +10,8 @@ export default function Home() {
 
   return (
     <>
-      <main className="h-screen w-full flex flex-row mt-0 bg-white">
-
+      <main className="h-screen w-full flex flex-row mt-0 bg-white overflow-hidden">
         <Sidebar />
-
         <section className="mx-3 sm:mx-20 flex flex-col w-full p-5 rounded-3xl">
           <div className="w-full h-12 px-4 pt-0 flex justify-between items-center max-w-[110rem] mx-auto xl:px-6 xl:justify-end">
 
@@ -37,9 +35,11 @@ export default function Home() {
           </div>
 
           <div className="flex flex-row h-full mt-6">
-            <div className="flex flex-col flex-auto h-full p-1">
-              { moduleActive == 0 && <ChatContainer />}
-              { moduleActive == 1 && <UploadResume />}
+            <div 
+              className={`flex flex-col flex-auto h-full p-1 ${moduleActive == 2 ? 'overflow-y-auto' : 'overflow-hidden'} `}
+            >
+              { /* moduleActive == 0 && <About /> */ }
+              { moduleActive == 1 && <ChatContainer />}
               { moduleActive == 2 && <Profile />}
             </div>
           </div>

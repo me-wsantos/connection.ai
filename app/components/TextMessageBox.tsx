@@ -5,9 +5,10 @@ interface Props {
   onSendMessage: (message: string) => void
   placeholder?: string
   disableCorrections?: boolean
+  resumeReady: boolean
 }
 
-export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false }: Props) => {
+export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false, resumeReady = false }: Props) => {
   const [message, setMessage] = useState("")
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
@@ -37,12 +38,13 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
             spellCheck={disableCorrections ? "true" : "false"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            disabled={!resumeReady}
           />
         </div>
       </div>
 
       <div className="ml-4">
-        <button className="flex justify-between items-center bg-custom-blue px-8 py-2 rounded-xl">
+        <button className={`flex justify-between items-center px-8 py-2 rounded-xl ${!resumeReady ? 'bg-gray-400' : 'bg-custom-blue'}`} disabled={!resumeReady}>
           <span className="text-white mr-2">Send</span>
           <IoIosSend color="white" size={20} />
         </button>

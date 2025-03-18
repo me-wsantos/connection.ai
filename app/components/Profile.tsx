@@ -7,6 +7,9 @@ export const Profile = () => {
   const { profile } = useAppContext();
 
   const listSkills = (skills: string[]) => {
+
+    if (!skills) return
+
     return skills.map((skill, index) => {
       return <span key={index}>{skill}, </span>
     })
@@ -65,7 +68,8 @@ export const Profile = () => {
                     <IoMdArrowDropright size={20} className="ml-[-.5rem] p-0" />
                     <span className="text-lg font-semibold mx-1">Professional experience</span>
                   </div>
-                  <div className="pl-4">{ 
+                  <div className="pl-4">
+                    { profile.Experiência &&
                       profile.Experiência.map((item: any, index: number) => (
                         <div 
                           key={index}

@@ -42,6 +42,10 @@ export interface IAppContext {
   setModuleActive(value: number): void
   profile: any,
   setProfile(value: any): void
+  isUploaded: boolean
+  setIsUploaded(value: boolean): void
+  fileUpload: any
+  setFileUpload(value: any): void
 }
 
 export interface IAgents {

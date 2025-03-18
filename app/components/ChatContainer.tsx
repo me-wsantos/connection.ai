@@ -3,9 +3,10 @@ import useAppContext from "../context/appContext";
 import { GptMessage, MyMessage, GptMessageAnalysis, TypingLoader, TextMessageBox } from "./"
 import { chatService } from "../services";
 import { IMessage } from "../interfaces";
+import { UploadResume } from "./";
 
 export const ChatContainer = () => {
-  const { messages, setMessages, isLoading, setIsLoading } = useAppContext();
+  const { messages, setMessages, isLoading, setIsLoading, isUploaded } = useAppContext();
 
   const handlePost = async (text: string) => {
     setIsLoading(true)
@@ -13,12 +14,10 @@ export const ChatContainer = () => {
 
     const { data } = await chatService({ prompt: text })
 
-    console.log("resposonse", data)
-
     if (data == undefined) {
       setMessages((prev: IMessage[]) => [...prev, {
-      text: "Sorry, it was not possible to answer your question. Please try again.",
-      isGpt: true
+        text: "Sorry, it was not possible to answer your question. Please try again.",
+        isGpt: true
       }])
     } else {
       setMessages((prev: IMessage[]) => [...prev, { text: data, isGpt: true }])
@@ -28,31 +27,39 @@ export const ChatContainer = () => {
 
   return (
     <div className="flex flex-col flex-shrink-0 rounded-2xl bg-white h-[calc(100vh-150px)] p-4 border">
-      <div className="chat-messages">
-      <div className="flex flex-col">
-        <GptMessage text={`Hello, please upload a resume so I can analyze it.`} />
-        {/* <GptMessage text={`Use the field below to send me commands and ask questions.`} /> */}
-
-        {
-        messages.map((message, index) => (
-          message.isGpt
-        ? (message.isAnalysis ? <GptMessageAnalysis key={index} /> : <GptMessage key={index} text={message.text} />)
-        : (<MyMessage key={index} text={message.text} />)
-        ))
-        }
-
-        {
-        isLoading && (
-          <TypingLoader className="fade-in" />
-        )
-        }
+      <div>
+        <UploadResume />
       </div>
+      <div className="chat-messages">
+        <div className="flex flex-col">
+          <GptMessage text="Hello! Please upload a resume so I can analyze it." />
+
+          {isUploaded && (
+            <GptMessage text={`I have received your resume. How can I help you?`} />
+          )
+          }
+
+          {
+            messages.map((message, index) => (
+              message.isGpt
+                ? (message.isAnalysis ? <GptMessageAnalysis key={index} /> : <GptMessage key={index} text={message.text} />)
+                : (<MyMessage key={index} text={message.text} />)
+            ))
+          }
+
+          {
+            isLoading && (
+              <TypingLoader className="fade-in" />
+            )
+          }
+        </div>
       </div>
 
       <TextMessageBox
-      onSendMessage={handlePost}
-      placeholder="Type your message..."
-      disableCorrections
+        onSendMessage={handlePost}
+        placeholder={isUploaded ? "Type your message..." : "Upload resume"}
+        disableCorrections
+        resumeReady={isUploaded}
       />
     </div>
   )

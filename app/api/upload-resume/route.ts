@@ -8,12 +8,11 @@ dotenv.config();
 export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
-
   const file = formData.get("file") as File;
-
   const extension = file.name.slice(file.name.lastIndexOf("."));
 
-  if (extension !== ".pdf") {
+  const validExtensions = [".pdf", ".png", ".jpg", ".jpeg"];
+  if (!validExtensions.includes(extension)) {
     return NextResponse.json({ status: "fail", message: "Formato de arquivo inválido" });
   }
 

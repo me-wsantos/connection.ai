@@ -14,7 +14,7 @@ const icons = [
   },
   {
     icon: <MdOutlineUploadFile size={28} className="mr-2 text-white mb-2" />,
-    text: "Upload Resume"
+    text: "Analyze resume"
   },
   {
     icon: <FaRegUser size={24} className="mr-2 text-white mb-2" />,
@@ -36,7 +36,7 @@ export function Sidebar() {
   const renderMenu = (icon: React.ReactNode, text: string, index: number) => {
 
     return (
-      <div 
+      <div
         key={text}
         className={`h-20 px-8 flex items-center justify-start mt-0 ${moduleActive === index ? "bg-blue-500" : "hover:bg-custom-blue-light"} cursor-pointer`}
         onClick={() => setModuleActive(index)}
@@ -48,8 +48,8 @@ export function Sidebar() {
   }
 
   return (
-    <div className="h-screen flex flex-col justify-between items-end max-w-7xl mx-auto">
-      <nav className="hidden sm:flex flex-col ml-0 w-[400px] h-full bg-custom-blue px-0 pt-4">
+    <div className="h-full flex flex-col justify-between items-end max-w-7xl mx-auto">
+      <nav className="hidden sm:flex flex-col ml-0 w-[400px] min-h-full bg-custom-blue px-0 pt-4">
 
         <h4 className="font-bold text-lg text-white mt-4 mb-28  text-center lg:text-xl">
           Connection.ai

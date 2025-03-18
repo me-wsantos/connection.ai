@@ -11,15 +11,19 @@ export const AppContextProvider = ({ children }: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [moduleActive, setModuleActive] = useState(0);
   const [profile, setProfile] = useState({});
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [fileUpload, setFileUpload] = useState<any>();
 
   return (
-    <AppContext.Provider value={{ 
+    <AppContext.Provider value={{
       dataAnalysis, setDataAnalysis,
       messages, setMessages,
       analysisPeriod, setAnalysisPeriod,
       isLoading, setIsLoading,
       moduleActive, setModuleActive,
-      profile, setProfile
+      profile, setProfile,
+      isUploaded, setIsUploaded,
+      fileUpload, setFileUpload
     }}>
       {children}
     </AppContext.Provider>

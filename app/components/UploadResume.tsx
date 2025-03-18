@@ -1,31 +1,40 @@
 "use client"
 
-import { useState } from "react";
-import { FaFilePdf } from "react-icons/fa";
+import { useRef, useState } from "react";
 import useAppContext from "../context/appContext";
+import axios from "axios";
+import { FaFileUpload } from "react-icons/fa";
+import { IoDocumentTextSharp } from "react-icons/io5";
+import Loading from "./loading";
 
 export const UploadResume = () => {
-  const [fileUpload, setFileUpload] = useState<any>();
   const [isError, setIsError] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(false);
   const [message, setMessage] = useState({ type: "default", description: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { setModuleActive, setProfile } = useAppContext();
+  const { setModuleActive, setProfile, isUploaded, setIsUploaded, fileUpload, setFileUpload } = useAppContext();
+
+  const handleDivClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   const handleChangeFile = (e: any) => {
     setIsUploaded(false);
 
     if (e.target.files[0]) {
       const extension = e.target.files[0].name.slice(e.target.files[0].name.lastIndexOf("."));
-
-      if (extension != ".pdf") {
-        setMessage({ ...message, type: "error", description: "Invalid file format! Please select a PDF file." });
+      const validExtensions = [".pdf", ".png", ".jpg", ".jpeg"];
+      if (!validExtensions.includes(extension)) {
+        setMessage({ ...message, type: "error", description: "Invalid file format! Please select a PDF, PNG, JPG or JPEG file." });
         setIsError(false);
         return
       } else {
         setIsError(true)
         setFileUpload(e.target.files[0])
+        uploadFile(e);
       }
     }
   }
@@ -39,13 +48,8 @@ export const UploadResume = () => {
     const formData = new FormData();
     formData.append("file", fileUpload);
 
-    const response = await fetch("/api/upload-resume", {
-      method: "POST",
-      body: formData,
-    });
-
-    const result = await response.json();
-    console.log(JSON.parse(result.data));
+    const response = await axios.post("/api/upload-resume", formData);
+    const result = await response.data;
 
     if (result.status === "fail") {
       setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
@@ -53,7 +57,6 @@ export const UploadResume = () => {
       setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
       setIsUploaded(true);
       setProfile(JSON.parse(result.data));
-      //console.log(result.data);
     }
 
     setIsLoading(false);
@@ -64,84 +67,108 @@ export const UploadResume = () => {
 
     if (!isError && message.description.length > 0) {
       rawHTML = `<span>${message.description}</span>`;
-      return <div className="p-4 bg-red-400 text-white text-center rounded" dangerouslySetInnerHTML={{ __html: rawHTML }} />;
-    } else if (isUploaded) {
-      rawHTML = `<span>${message.description}</span>`
-      return <div className="p-4 bg-green-500 text-white text-center rounded" dangerouslySetInnerHTML={{ __html: rawHTML }} />;
-    } else {
-      return ""
+      return <div className="p-2 mt-4 text-sm text-red-500 text-center rounded" dangerouslySetInnerHTML={{ __html: rawHTML }} />;
     }
   }
 
-  return (
-    <div className="flex flex-col flex-shrink-0 rounded-2xl h-[calc(100vh-150px)] p-4 bg-blue-50">
-      <div className="upload-section ">
-      <div className="h-auto flex flex-col p-0 w-100">
-            <section className="h-full flex flex-col justify-start">
-              <div className="h-full p-8 flex flex-col justify-center items-center">
-                <span
-                  className="w-full mb-12 text-custom-blue-100 text-xl leading-normal font-bold text-center md:text-2xl">
-                  Resume Upload
-                </span>
+  if (!isUploaded) {
+    return (
+      <>
+        <div className="flex flex-col flex-shrink-0 rounded-2xl h-60 p-4 bg-blue-50">
+          <div className="p-0 w-100 flex justify-center">
+            <div className="p-0 flex flex-col justify-center items-center">
 
-                { !isUploaded && 
-                  <>
-                    <span>
-                      Upload a resume in PDF format
-                    </span>
-
-                    <label
-                      htmlFor="arquivo_upload"
-                      className="bg-cyan-600 w-80 hover:bg-cyan-700 text-white py-2 px-4 mt-12 rounded text-center cursor-pointer"
-                    >
-                        {fileUpload != undefined ? "Change file" : "Select file"}
-                    </label>
-
-
-                    <div className="h-32 flex flex-col justify-center items-center">
-                      {isError &&
-                        <>
-                          <FaFilePdf size={50} color={"#E74C3C"} className="mb-6" />
-                          <span>{fileUpload != undefined ? fileUpload.name : "No file selected"}</span>
-                        </>
-                      }
-                    </div>
-                  </>
-                }
-
-                {handleMessage()}
-
-                { isUploaded && 
-                  <div 
-                    className="w-auto py-0 px-4 mt-8  bg-blue-500 text-white text-center rounded hover:cursor-pointer"
-                    onClick={() => setModuleActive(2)}
-                  >
-                    Show Profile
-                  </div>
-                }
-
-                <input 
-                  type="file" 
-                  className="invisible" 
-                  id="arquivo_upload" 
-                  name="file" 
-                  onChange={(e) => handleChangeFile(e)}
-                />
-
-                {(isError && !isUploaded) && (
-                    <button
-                      type="submit"
-                      onClick={uploadFile}
-                      className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
-                    >
-                      {isLoading ? "Please wait..." : "Upload file"}
-                    </button>
-                )
-                }
+              <div
+                className="bg-cyan-600 w-32 h-32 hover:bg-cyan-700 text-white rounded-full flex flex-col justify-center items-center cursor-pointer"
+                onClick={handleDivClick}
+              >
+                <FaFileUpload size={32} className="mb-4" />
+                <label className="text-xs">
+                  {fileUpload != undefined ? "Change file" : "Upload resume"}
+                </label>
               </div>
-            </section>
+
+              <div className="text-xs mt-2">
+                Format PDF, PNG, JPG and JPEG
+              </div>
+
+              {handleMessage()}
+
+              {isUploaded &&
+                <div
+                  className="w-auto py-0 px-4 mt-8  bg-blue-500 text-white text-center rounded hover:cursor-pointer"
+                  onClick={() => setModuleActive(2)}
+                >
+                  Show Profile
+                </div>
+              }
+
+              <input
+                type="file"
+                className="invisible"
+                ref={fileInputRef}
+                name="file"
+                onChange={(e) => handleChangeFile(e)}
+              />
+
+              {(isError && !isUploaded) && (
+                <button
+                  type="submit"
+                  onClick={uploadFile}
+                  className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
+                >
+                  {isLoading ? <Loading /> : "Upload file"}
+                </button>
+              )
+              }
+            </div>
           </div>
+        </div>
+      </>
+    )
+  } else {
+    return (
+      <div className="flex flex-col flex-shrink-0 rounded-2xl h-auto p-4 bg-blue-50">
+        <div className="p-0 w-100 flex justify-start">
+          <div className="p-0 flex justify-start items-center">
+            <div className="flex justify-center items-center mr-12">
+              <IoDocumentTextSharp size={25} color={"#E74C3C"} className="mr-2" />
+              <span className="text-xs">{fileUpload != undefined ? fileUpload.name : "No file selected"}</span>
+            </div>
+            <div
+              className="w-auto py-1 px-4 mx-2  bg-blue-500 text-xs text-white text-center rounded hover:cursor-pointer"
+              onClick={handleDivClick}
+            >
+              Change file
+            </div>
+            <div
+              className="w-auto py-1 px-4 mx-2  bg-blue-500 text-xs text-white text-center rounded hover:cursor-pointer"
+              onClick={() => setModuleActive(2)}
+            >
+              Show Profile
+            </div>
+
+            <input
+              type="file"
+              className="invisible"
+              ref={fileInputRef}
+              name="file"
+              onChange={(e) => handleChangeFile(e)}
+            />
+
+            {(isError && !isUploaded) && (
+              <button
+                type="submit"
+                onClick={uploadFile}
+                className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
+              >
+                {isLoading ? "Please wait..." : "Upload file"}
+              </button>
+            )
+            }
+          </div>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
