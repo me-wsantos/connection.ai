@@ -66,7 +66,7 @@ export const Profile = () => {
                     <span className="text-lg font-semibold mx-1">Professional experience</span>
                   </div>
                   <div className="pl-4">{ 
-                      profile.Experiência.map((item, index) => (
+                      profile.Experiência.map((item: any, index: number) => (
                         <div 
                           key={index}
                           className="flex flex-col mb-2 border-b-2 pb-2"
