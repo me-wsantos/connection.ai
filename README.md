@@ -41,6 +41,9 @@ A solução é composta pelos seguintes componentes principais:
 3. **Azure Storage**
    - Armazena temporariamente os arquivos de currículo para processamento pelo Document Intelligence.
 
+4. **Azure Functions**
+   - Executa o processamento assíncrono dos currículos e a geração de entrevistas personalizadas.
+
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Flying%20Saucer.png" alt="Flying Saucer" width="35" height="35" /> Tecnologias Utilizadas
 - **Next.js**: Framework React para desenvolvimento de aplicações web.
 - **React**: Biblioteca JavaScript para construção de interfaces de usuário.
@@ -134,4 +137,3 @@ Para dúvidas ou sugestões, entre em contato com a gente.
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="35" height="35" /> Contribuição 
 
 Sinta-se à vontade para contribuir com este repositório. Abra uma issue ou envie um pull request com suas sugestões e melhorias.
-
