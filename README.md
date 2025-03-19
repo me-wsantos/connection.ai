@@ -6,7 +6,7 @@ A *Connection.ai* é uma inovadora plataforma de inteligência artificial destin
 
 Os sistemas de IA da *Connection.ai* são desenvolvidos para tratar todos de forma justa, garantindo que candidatos com qualificações, experiências e competências semelhantes recebam as mesmas recomendações e oportunidades, promovendo um ambiente de recrutamento mais acessível e justo.
 
-## Escopo do Projeto
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Bullseye.png" alt="Bullseye" width="35" height="35" /> Escopo do Projeto
 ### **1. Análise Curricular Automatizada**
 - Os usuários poderão fazer upload dos currículos, que serão analisados pela IA para identificar habilidades, experiências e lacunas de competências.
 - Com base na análise, será gerado um plano de desenvolvimento individual, destacando áreas de melhoria e sugerindo cursos e certificações necessárias para impulsionar a carreira.
@@ -15,7 +15,7 @@ Os sistemas de IA da *Connection.ai* são desenvolvidos para tratar todos de for
 - A IA criará simulados de entrevista baseados no perfil do candidato e nos requisitos da vaga desejada, proporcionando uma experiência de entrevista prática e focada.
 - Feedback em tempo real será oferecido, permitindo aos candidatos ajustarem suas respostas e abordagens antes de uma entrevista real.
 
-## Arquitetura do Projeto
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="35" height="35" /> Arquitetura do Projeto
 A solução é composta pelos seguintes componentes principais:
 
 ### **Frontend**
@@ -41,7 +41,7 @@ A solução é composta pelos seguintes componentes principais:
 3. **Azure Storage**
    - Armazena temporariamente os arquivos de currículo para processamento pelo Document Intelligence.
 
-## Tecnologias Utilizadas
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Flying%20Saucer.png" alt="Flying Saucer" width="35" height="35" /> Tecnologias Utilizadas
 - **Next.js**: Framework React para desenvolvimento de aplicações web.
 - **React**: Biblioteca JavaScript para construção de interfaces de usuário.
 - **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
@@ -51,13 +51,13 @@ A solução é composta pelos seguintes componentes principais:
 - **OpenAI**: API para integração com modelos de linguagem.
 - **Axios**: Cliente HTTP para fazer requisições.
 
-## Funcionalidades
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Light%20Bulb.png" alt="Light Bulb" width="30" height="30" /> Funcionalidades
 - **Análise de Currículos**: Upload de currículos em formatos PDF, PNG, JPG e JPEG para análise.
 - **Chatbot**: Assistente virtual para responder perguntas sobre análise de currículos.
 - **Análise de Dados**: Ferramentas para análise de folhas de pagamento e identificação de discrepâncias.
 - **Perfil do Candidato**: Visualização de informações detalhadas sobre o candidato, incluindo habilidades e experiências profissionais.
 
-## Fluxo de Funcionamento
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Ferris%20Wheel.png" alt="Ferris Wheel" width="40" height="40" /> Fluxo de Funcionamento
 1. **Upload do currículo** via frontend.
 2. **Armazenamento temporário no Azure Storage**.
 3. **Processamento pelo Document Intelligence**, que extrai os dados estruturados.
@@ -65,13 +65,6 @@ A solução é composta pelos seguintes componentes principais:
 5. **Geração de insights e feedback sobre o currículo**.
 6. **Criação de simulação de entrevista personalizada** com base no perfil do candidato.
 7. **Retorno das informações** para o frontend.
-
-## Configuração do Ambiente
-1. **Clonar o Repositório**
-   ```sh
-   git clone <URL_DO_REPOSITORIO>
-   cd connection-ai
-   ```
 
 ### **Estrutura de Diretórios**
 ```
@@ -94,7 +87,7 @@ public/     -> Contém arquivos públicos como imagens.
 - `npm start`: Inicia a aplicação em modo de produção.
 - `npm run lint`: Executa o linter para verificar problemas no código.
 
-## Como Executar o Projeto
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Medium%20Skin%20Tone.png" alt="Man Technologist Medium Skin Tone" width="35" height="35" /> Como Executar o Projeto
 
 ### **Pré-requisitos**
 - Conta na **Azure** com acesso ao **Azure OpenAI, Document Intelligence e Storage**.
@@ -127,18 +120,18 @@ public/     -> Contém arquivos públicos como imagens.
    ```
 
 
-### **Contato**
+### **Contato** <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Love%20Letter.png" alt="Love Letter" width="25" height="25" />
 Para dúvidas ou sugestões, entre em contato com a gente.
 
-[![LinkedIn](https://img.shields.io/badge/Linkedin_Caio-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/devcaiada)
+[![LinkedIn](https://img.shields.io/badge/Linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/devcaiada)_**Caio Arruda**
 
-[![LinkedIn](https://img.shields.io/badge/Linkedin_Wellington-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wellington)
+[![LinkedIn](https://img.shields.io/badge/Linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/-wellington-santos/) _ **Wellington Santos**
 
-[![LinkedIn](https://img.shields.io/badge/Linkedin_Victor-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/devcaiada)
+[![LinkedIn](https://img.shields.io/badge/Linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-la-corte-348b81250/)_**Victor La Corte**
 
 ---
 
-## Contribuição <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="25" height="25" />
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="35" height="35" /> Contribuição 
 
 Sinta-se à vontade para contribuir com este repositório. Abra uma issue ou envie um pull request com suas sugestões e melhorias.
 
