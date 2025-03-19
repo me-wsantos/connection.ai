@@ -9,6 +9,9 @@ export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
   const file = formData.get("file") as File;
+
+  if (file === undefined) return NextResponse.json({ status: "fail", message: "Arquivo não encontrado!" });
+
   const extension = file.name.slice(file.name.lastIndexOf("."));
 
   const validExtensions = [".pdf", ".png", ".jpg", ".jpeg"];

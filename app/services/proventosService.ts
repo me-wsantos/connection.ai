@@ -1,7 +1,4 @@
 export const proventosService = async (idFolha: string) => {
-
-  console.log("idFolha", idFolha)
-
   try {
     const resp = await fetch(`/api/data-analysis/getProventos`, {
       method: 'POST',

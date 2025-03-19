@@ -1,8 +1,9 @@
 "use client"
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAppContext from "../context/appContext";
 import axios from "axios";
+import { careerPlanService } from "../services";
 import { FaFileUpload } from "react-icons/fa";
 import { IoDocumentTextSharp } from "react-icons/io5";
 import Loading from "./loading";
@@ -13,7 +14,19 @@ export const UploadResume = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { setModuleActive, setProfile, isUploaded, setIsUploaded, fileUpload, setFileUpload } = useAppContext();
+  const {
+    setModuleActive,
+    setProfile,
+    isUploaded, setIsUploaded,
+    fileUpload, setFileUpload,
+    careerPlan, setCareerPlan
+  } = useAppContext();
+
+  useEffect(() => {
+    if (fileUpload && !isUploaded) {
+      uploadFile(); // Call uploadFile only after fileUpload has been set
+    }
+  }, [fileUpload]);
 
   const handleDivClick = () => {
     if (fileInputRef.current) {
@@ -34,29 +47,47 @@ export const UploadResume = () => {
       } else {
         setIsError(true)
         setFileUpload(e.target.files[0])
-        uploadFile(e);
       }
     }
   }
 
-  async function uploadFile(
-    evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
-    evt.preventDefault();
+  async function uploadFile() {
     setIsLoading(true);
+
+    if (!fileUpload) {
+      setMessage({ ...message, type: "error", description: "No file to upload." });
+      setIsLoading(false);
+      return;
+    }
 
     const formData = new FormData();
     formData.append("file", fileUpload);
 
-    const response = await axios.post("/api/upload-resume", formData);
-    const result = await response.data;
+    try {
+      const response = await axios.post("/api/upload-resume", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      const result = await response.data;
 
-    if (result.status === "fail") {
+      if (result.status === "fail") {
+        setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
+      } else {
+        setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
+        setIsUploaded(true);
+        setProfile(JSON.parse(result.data));
+
+        const dataCareerPlan = await careerPlanService(result.data);
+
+        if (dataCareerPlan.status === "fail") {
+          setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
+        } else {
+          setCareerPlan(dataCareerPlan.data.data);
+        }
+      }
+    } catch (error) {
       setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
-    } else {
-      setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
-      setIsUploaded(true);
-      setProfile(JSON.parse(result.data));
     }
 
     setIsLoading(false);

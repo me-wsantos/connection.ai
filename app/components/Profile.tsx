@@ -14,7 +14,7 @@ export const Profile = () => {
       return <span key={index}>{skill}, </span>
     })
   }
-  
+
   const listProfessionalExperience = (data: object) => {
     return Object.entries(data).map(([key, value]) => {
 
@@ -26,7 +26,7 @@ export const Profile = () => {
 
   return (
     <div className="flex flex-col flex-shrink-0 rounded-2xl h-[calc(100vh-150px)] p-4">
-      <div className="upload-section ">
+      <div className="upload-section">
         <div className="h-auto flex flex-col p-0 w-100">
           <section className="h-full flex flex-col justify-start">
             <div className="h-full pb-0 flex justify-start items-end border-b-2">
@@ -60,7 +60,7 @@ export const Profile = () => {
                     <IoMdArrowDropright size={20} className="ml-[-.5rem] p-0" />
                     <span className="text-lg font-semibold mx-1">Skills</span>
                   </div>
-                  <span>{ listSkills(profile.Skills) }</span>
+                  <span>{listSkills(profile.Skills)}</span>
                 </div>
 
                 <div className="py-2 flex flex-col pr-2 mt-4">
@@ -69,15 +69,15 @@ export const Profile = () => {
                     <span className="text-lg font-semibold mx-1">Professional experience</span>
                   </div>
                   <div className="pl-4">
-                    { profile.Experiência &&
+                    {profile.Experiência &&
                       profile.Experiência.map((item: any, index: number) => (
-                        <div 
+                        <div
                           key={index}
                           className="flex flex-col mb-2 border-b-2 pb-2"
                         >
                           {listProfessionalExperience(item)}
                         </div>
-                      )) 
+                      ))
                     }</div>
                 </div>
               </div>

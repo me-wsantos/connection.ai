@@ -6,7 +6,7 @@ import { IMessage } from "../interfaces";
 import { UploadResume } from "./";
 
 export const ChatContainer = () => {
-  const { messages, setMessages, isLoading, setIsLoading, isUploaded } = useAppContext();
+  const { messages, setMessages, isLoading, setIsLoading, isUploaded, careerPlan } = useAppContext();
 
   const handlePost = async (text: string) => {
     setIsLoading(true)

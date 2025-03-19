@@ -46,6 +46,8 @@ export interface IAppContext {
   setIsUploaded(value: boolean): void
   fileUpload: any
   setFileUpload(value: any): void
+  careerPlan: string
+  setCareerPlan(value: string): void
 }
 
 export interface IAgents {
