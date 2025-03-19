@@ -17,7 +17,7 @@ Os sistemas de IA da *Connection.ai* são desenvolvidos para tratar todos de for
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="35" height="35" /> Arquitetura do Projeto
 
-![arquitecture]()
+![arquitecture](https://github.com/devcaiada/connection.ai/blob/main/assets/arquitecture.png?raw=true)
 
 A solução é composta pelos seguintes componentes principais:
 
