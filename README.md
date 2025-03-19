@@ -16,6 +16,9 @@ Os sistemas de IA da *Connection.ai* são desenvolvidos para tratar todos de for
 - Feedback em tempo real será oferecido, permitindo aos candidatos ajustarem suas respostas e abordagens antes de uma entrevista real.
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="35" height="35" /> Arquitetura do Projeto
+
+![arquitecture]()
+
 A solução é composta pelos seguintes componentes principais:
 
 ### **Frontend**
