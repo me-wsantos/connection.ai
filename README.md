@@ -60,6 +60,8 @@ A solução é composta pelos seguintes componentes principais:
 - **Análise de Dados**: Ferramentas para análise de folhas de pagamento e identificação de discrepâncias.
 - **Perfil do Candidato**: Visualização de informações detalhadas sobre o candidato, incluindo habilidades e experiências profissionais.
 
+![front]()
+
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Ferris%20Wheel.png" alt="Ferris Wheel" width="40" height="40" /> Fluxo de Funcionamento
 1. **Upload do currículo** via frontend.
 2. **Armazenamento temporário no Azure Storage**.
