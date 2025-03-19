@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }: any) => {
   const [profile, setProfile] = useState({});
   const [isUploaded, setIsUploaded] = useState(false);
   const [fileUpload, setFileUpload] = useState<any>();
+  const [careerPlan, setCareerPlan] = useState<any>();
 
   return (
     <AppContext.Provider value={{
@@ -23,7 +24,8 @@ export const AppContextProvider = ({ children }: any) => {
       moduleActive, setModuleActive,
       profile, setProfile,
       isUploaded, setIsUploaded,
-      fileUpload, setFileUpload
+      fileUpload, setFileUpload,
+      careerPlan, setCareerPlan
     }}>
       {children}
     </AppContext.Provider>
