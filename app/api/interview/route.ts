@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
-//import dotenv from 'dotenv';
-
-//dotenv.config();
 
 export async function POST(request: NextRequest) {
   const { perfil } = await request.json();

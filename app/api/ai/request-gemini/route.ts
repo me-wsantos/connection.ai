@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { extractJsonMarkdown } from '@/app/utils/extractJsonMarkdown';
+<<<<<<< HEAD
 //import dotenv from 'dotenv';
 
 //dotenv.config();
+=======
+import dotenv from 'dotenv';
+
+dotenv.config();
+>>>>>>> teste
 
 export async function POST(request: NextRequest) {
   const { agentObjective, backstory, prompt } = await request.json();

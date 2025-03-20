@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+<<<<<<< HEAD
 //import dotenv from 'dotenv';
 import axios from 'axios';
 
 //dotenv.config();
+=======
+import dotenv from 'dotenv';
+import axios from 'axios';
+
+dotenv.config();
+>>>>>>> teste
 
 export async function POST(request: NextRequest) {
   const { agentObjective, prompt } = await request.json();
