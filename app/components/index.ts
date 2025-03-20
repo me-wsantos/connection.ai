@@ -8,3 +8,4 @@ export * from "./TextMessageBox";
 export * from "./UploadResume"
 export * from "./Profile"
 export * from "./CareerPlan"
+export * from "./Interview"

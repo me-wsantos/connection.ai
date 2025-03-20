@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import useAppContext from "../context/appContext";
 import axios from "axios";
-import { careerPlanService } from "../services";
+import { careerPlanService, interviewService } from "../services";
 import { FaFileUpload } from "react-icons/fa";
 import { IoDocumentTextSharp } from "react-icons/io5";
 import Loading from "./loading";
@@ -19,7 +19,8 @@ export const UploadResume = () => {
     setProfile,
     isUploaded, setIsUploaded,
     fileUpload, setFileUpload,
-    setCareerPlan
+    setCareerPlan,
+    setInterview
   } = useAppContext();
 
   useEffect(() => {
@@ -73,20 +74,26 @@ export const UploadResume = () => {
       const result = await response.data;
 
       if (result.status === "fail") {
-        setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
+        setMessage({ ...message, type: "error", description: "An error occurred while create career plan." });
       } else {
         setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
         setIsUploaded(true);
         setProfile(JSON.parse(result.data));
 
-        const dataCareerPlan = await careerPlanService(result.data);
-
-        //console.log(dataCareerPlan.data);
+        /* const dataCareerPlan = await careerPlanService(result.data);
 
         if (dataCareerPlan.status === "fail") {
           setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
         } else {
           setCareerPlan(dataCareerPlan.data.data);
+        } */
+        
+        const dataInterview = await interviewService(result.data);
+
+        if (dataInterview.status === "fail") {
+          setMessage({ ...message, type: "error", description: "An error occurred while create interview questions." });
+        } else {
+          setInterview(dataInterview.data.data);
         }
       }
     } catch (error) {

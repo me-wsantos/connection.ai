@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import useAppContext from "./context/appContext";
-import { Sidebar, About, ChatContainer, Profile, CareerPlan } from "./components";
+import { Sidebar, About, ChatContainer, Profile, CareerPlan, Interview } from "./components";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
@@ -42,6 +42,7 @@ export default function Home() {
               { moduleActive == 1 && <ChatContainer /> }
               { moduleActive == 2 && <Profile /> }
               { moduleActive == 3 && <CareerPlan /> }
+              { moduleActive == 4 && <Interview /> }
             </div>
           </div>
         </section>

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
+//import { extractJsonMarkdown } from "@/app/utils/extractJsonMarkdown";
 
 export async function POST(request: NextRequest) {
   const { perfil } = await request.json();
@@ -7,11 +8,12 @@ export async function POST(request: NextRequest) {
   if (!perfil) return NextResponse.json({ status: "fail", message: "Perfil não encontrado!" });
   
   try {
-    const serviceUrl = process.env.CAREER_PLAN_URL || ""
-    const result = await axios.post(serviceUrl, perfil, {
+    const serviceUrl = process.env.INTERVIEW_URL || ""
+    const result = await axios.post(serviceUrl, { perfil }, {
       headers: { 'Content-Type': 'application/json' }
     });
 
+    //const data = extractJsonMarkdown(result.data);
     return NextResponse.json({ status: "success", data: result.data });
 
   } catch (e) {

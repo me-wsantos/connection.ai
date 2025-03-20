@@ -48,6 +48,8 @@ export interface IAppContext {
   setFileUpload(value: any): void
   careerPlan: any
   setCareerPlan(value: any): void
+  interview: any
+  setInterview(value: any): void
 }
 
 export interface IAgents {
