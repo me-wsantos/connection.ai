@@ -28,7 +28,12 @@ export async function POST(request: NextRequest) {
       cv: pdfBase64
     }
 
-    const serviceUrl = process.env.SERVICE_EXTRACT_URL || ""
+    const serviceUrl = process.env.SERVICE_EXTRACT_URL;
+
+    if (!serviceUrl) {
+      return NextResponse.json({ status: "fail", error: "SERVICE_EXTRACT_URL is not defined" });
+    }
+
     const result = await axios.post(serviceUrl, resume, {
       headers: { 'Content-Type': 'application/json' }
     });

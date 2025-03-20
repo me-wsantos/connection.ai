@@ -19,13 +19,14 @@ export const UploadResume = () => {
     setProfile,
     isUploaded, setIsUploaded,
     fileUpload, setFileUpload,
-    careerPlan, setCareerPlan
+    setCareerPlan
   } = useAppContext();
 
   useEffect(() => {
     if (fileUpload && !isUploaded) {
       uploadFile(); // Call uploadFile only after fileUpload has been set
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileUpload]);
 
   const handleDivClick = () => {
@@ -80,6 +81,8 @@ export const UploadResume = () => {
 
         const dataCareerPlan = await careerPlanService(result.data);
 
+        //console.log(dataCareerPlan.data);
+
         if (dataCareerPlan.status === "fail") {
           setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
         } else {
@@ -87,6 +90,7 @@ export const UploadResume = () => {
         }
       }
     } catch (error) {
+      console.log(error);
       setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
     }
 
