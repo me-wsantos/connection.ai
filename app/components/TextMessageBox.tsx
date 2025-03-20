@@ -12,7 +12,7 @@ interface Props {
 
 export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false, resumeReady = false }: Props) => {
   const [message, setMessage] = useState("");
-  const { chatMessages, setChatMessages } = useAppContext();
+  const { setChatMessages } = useAppContext();
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
