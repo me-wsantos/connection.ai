@@ -1,4 +1,6 @@
-import { FormEvent, useState } from "react"
+"use client"
+import { FormEvent, useEffect, useState } from "react"
+import useAppContext from "../context/appContext";
 import { IoIosSend } from "react-icons/io";
 
 interface Props {
@@ -9,14 +11,23 @@ interface Props {
 }
 
 export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections = false, resumeReady = false }: Props) => {
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
+  const { chatMessages, setChatMessages } = useAppContext();
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    // Adiciona a mensagem do usuário ao array chatMessages
+    const newUserMessage = {
+      role: "user",
+      content: message.trim()
+    };
 
-    if (message.trim().length == 0) return
+    setChatMessages((prevMessages: any) => [...prevMessages, newUserMessage]);
 
-    onSendMessage(message)
+    // Chama a função onSendMessage passada como prop
+    onSendMessage(message.trim())
+
+    // Limpa o campo de mensagem
     setMessage("")
   }
 
@@ -38,13 +49,17 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
             spellCheck={disableCorrections ? "true" : "false"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            disabled={!resumeReady}
+          //disabled={!resumeReady}
           />
         </div>
       </div>
 
       <div className="ml-4">
-        <button className={`flex justify-between items-center px-8 py-2 rounded-xl ${!resumeReady ? 'bg-gray-400' : 'bg-custom-blue'}`} disabled={!resumeReady}>
+        <button
+          type="submit"
+          className={`flex justify-between items-center px-8 py-2 rounded-xl ${!resumeReady ? 'bg-gray-400' : 'bg-custom-blue'}`}
+        //disabled={!resumeReady}
+        >
           <span className="text-white mr-2">Send</span>
           <IoIosSend color="white" size={20} />
         </button>

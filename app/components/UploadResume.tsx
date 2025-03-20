@@ -14,6 +14,10 @@ export const UploadResume = () => {
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+
+
+
+
   const {
     setModuleActive,
     setProfile,
@@ -23,12 +27,15 @@ export const UploadResume = () => {
     setInterview,
     setLoadingProfile,
     setLoadingCareerPlan,
-    setLoadingInterview
+    setLoadingInterview,
+    setChatMessages
   } = useAppContext();
+
 
   useEffect(() => {
     if (fileUpload && !isUploaded) {
       uploadFile(); // Call uploadFile only after fileUpload has been set
+      
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileUpload]);
@@ -89,6 +96,7 @@ export const UploadResume = () => {
         setIsUploaded(true);
         setProfile(JSON.parse(result.data));
         setLoadingProfile(false)
+        setChatMessages((prev: any) => [...prev, { role: "assistant", content: "I have received your resume. How can I help you?" }]);
 
         // Get career plan
         const dataCareerPlan = await careerPlanService(result.data);

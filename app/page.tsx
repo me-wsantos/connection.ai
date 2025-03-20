@@ -6,7 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
 export default function Home() {
-  const { moduleActive } = useAppContext();
+  const { moduleActive, chatMessages } = useAppContext();
 
   return (
     <>

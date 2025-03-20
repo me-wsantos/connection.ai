@@ -16,7 +16,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Connection.ai",
-  description: "Assistente para análise curricular",
+  description: "Curriculum analysis assistant",
 };
 
 export default function RootLayout({
