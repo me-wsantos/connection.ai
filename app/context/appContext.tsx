@@ -15,6 +15,9 @@ export const AppContextProvider = ({ children }: any) => {
   const [fileUpload, setFileUpload] = useState();
   const [careerPlan, setCareerPlan] = useState();
   const [interview, setInterview] = useState();
+  const [loadingProfile, setLoadingProfile] = useState(false)
+  const [loadingCareerPlan, setLoadingCareerPlan] = useState(false)
+  const [loadingInterview, setLoadingInterview] = useState(false)
 
   return (
     <AppContext.Provider value={{
@@ -27,7 +30,10 @@ export const AppContextProvider = ({ children }: any) => {
       isUploaded, setIsUploaded,
       fileUpload, setFileUpload,
       careerPlan, setCareerPlan,
-      interview, setInterview
+      interview, setInterview,
+      loadingProfile, setLoadingProfile,
+      loadingCareerPlan, setLoadingCareerPlan,
+      loadingInterview, setLoadingInterview
     }}>
       {children}
     </AppContext.Provider>

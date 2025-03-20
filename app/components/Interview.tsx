@@ -13,7 +13,7 @@ export const Interview = () => {
 
   useEffect(() => {
     let objQuestion = {} as Props
-    
+
     if (typeof interview === "string") {
       let cleanedString = "";
 
@@ -21,16 +21,22 @@ export const Interview = () => {
         cleanedString = String(interview).replace(/```json\s*/g, "").replace(/```$/, "");
 
         objQuestion = JSON.parse(cleanedString)
-        
+
       }
     } else if (typeof interview === "object") {
       objQuestion = interview
     }
 
-    const { Perguntas } = objQuestion
 
-    const arrayQuestions = Perguntas.toString().split("?,")
-    setQuestions(arrayQuestions)
+    if (objQuestion != null) {
+      const { Perguntas } = objQuestion
+
+      if (Perguntas && Perguntas.length) {
+        const arrayQuestions = Perguntas.toString().split("?,")
+        setQuestions(arrayQuestions)
+      }
+    }
+
   }, [interview]);
 
   return (
@@ -49,12 +55,12 @@ export const Interview = () => {
               <div className="w-full pr-0">
                 {
                   questions.map((item: string, i: number) => (
-                    <div 
-                    key={i}
-                    className={`w-full py-8 ${i > 0 ? 'border-t-2' : ''}`}
-                  >
-                    <span className="font-bold">{i+1}</span> - { item }{ item.endsWith("?") ? "" : "?" }
-                  </div>
+                    <div
+                      key={i}
+                      className={`w-full py-8 ${i > 0 ? 'border-t-2' : ''}`}
+                    >
+                      <span className="font-bold">{i + 1}</span> - {item}{item.endsWith("?") ? "" : "?"}
+                    </div>
                   ))
                 }
               </div>

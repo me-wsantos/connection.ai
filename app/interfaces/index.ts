@@ -50,6 +50,12 @@ export interface IAppContext {
   setCareerPlan(value: any): void
   interview: any
   setInterview(value: any): void
+  loadingProfile: boolean
+  setLoadingProfile(value: boolean): void
+  loadingCareerPlan: boolean
+  setLoadingCareerPlan(value: boolean): void
+  loadingInterview: boolean
+  setLoadingInterview(value: boolean): void
 }
 
 export interface IAgents {

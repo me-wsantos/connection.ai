@@ -6,6 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import { HiOutlineHome } from "react-icons/hi2";
 import { GoChecklist } from "react-icons/go";
 import { MdOutlineUploadFile } from "react-icons/md";
+import Loading from "./loading";
 
 const icons = [
   {
@@ -31,7 +32,14 @@ const icons = [
 ]
 
 export function Sidebar() {
-  const { moduleActive, setModuleActive } = useAppContext();
+  const {
+    moduleActive,
+    setModuleActive,
+    loadingProfile,
+    loadingCareerPlan,
+    loadingInterview
+  } = useAppContext();
+
 
   const renderMenu = (icon: React.ReactNode, text: string, index: number) => {
 
@@ -43,6 +51,9 @@ export function Sidebar() {
       >
         {icon}
         <span className="text-white">{text}</span>
+        {index == 2 && loadingProfile ? <Loading /> : ""}
+        {index == 3 && loadingCareerPlan ? <Loading /> : ""}
+        {index == 4 && loadingInterview ? <Loading /> : ""}
       </div>
     )
   }
@@ -55,7 +66,9 @@ export function Sidebar() {
           Connection.ai
         </h4>
 
-        {icons.map((icon, index) => renderMenu(icon.icon, icon.text, index))}
+        {icons.map((icon, index) => (
+          renderMenu(icon.icon, icon.text, index)
+        ))}
 
       </nav>
     </div>

@@ -20,14 +20,17 @@ export const UploadResume = () => {
     isUploaded, setIsUploaded,
     fileUpload, setFileUpload,
     setCareerPlan,
-    setInterview
+    setInterview,
+    setLoadingProfile,
+    setLoadingCareerPlan,
+    setLoadingInterview
   } = useAppContext();
 
   useEffect(() => {
     if (fileUpload && !isUploaded) {
       uploadFile(); // Call uploadFile only after fileUpload has been set
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileUpload]);
 
   const handleDivClick = () => {
@@ -55,6 +58,12 @@ export const UploadResume = () => {
 
   async function uploadFile() {
     setIsLoading(true);
+    setLoadingProfile(true)
+    setLoadingCareerPlan(true)
+    setLoadingInterview(true)
+    setProfile({})
+    setInterview(null)
+    setCareerPlan(null)
 
     if (!fileUpload) {
       setMessage({ ...message, type: "error", description: "No file to upload." });
@@ -79,15 +88,19 @@ export const UploadResume = () => {
         setMessage({ ...message, type: "success", description: "Resume uploaded successfully." });
         setIsUploaded(true);
         setProfile(JSON.parse(result.data));
+        setLoadingProfile(false)
 
-        /* const dataCareerPlan = await careerPlanService(result.data);
+        // Get career plan
+        const dataCareerPlan = await careerPlanService(result.data);
 
         if (dataCareerPlan.status === "fail") {
           setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
         } else {
           setCareerPlan(dataCareerPlan.data.data);
-        } */
-        
+        }
+        setLoadingCareerPlan(false)
+
+        // Get interview questionnaire
         const dataInterview = await interviewService(result.data);
 
         if (dataInterview.status === "fail") {
@@ -95,6 +108,7 @@ export const UploadResume = () => {
         } else {
           setInterview(dataInterview.data.data);
         }
+        setLoadingInterview(false)
       }
     } catch (error) {
       console.log(error);
@@ -102,6 +116,7 @@ export const UploadResume = () => {
     }
 
     setIsLoading(false);
+
   }
 
   const handleMessage = () => {
@@ -159,7 +174,7 @@ export const UploadResume = () => {
                   onClick={uploadFile}
                   className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
                 >
-                  {isLoading ? <Loading /> : "Upload file"}
+                  {isLoading ? <Loading value="Please wait..." /> : "Upload file"}
                 </button>
               )
               }
