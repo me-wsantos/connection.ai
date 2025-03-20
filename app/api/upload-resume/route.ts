@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 import { extractJsonMarkdown } from "@/app/utils/extractJsonMarkdown";
-//import dotenv from 'dotenv';
 
 export async function POST(request: NextRequest) {
-
   const formData = await request.formData();
   const file = formData.get("file") as File;
 
@@ -26,9 +24,12 @@ export async function POST(request: NextRequest) {
       cv: pdfBase64
     }
 
-    console.log("env", process.env.SERVICE_EXTRACT_URL)
+    const serviceUrl = process.env.SERVICE_EXTRACT_URL;
 
-    const serviceUrl = process.env.SERVICE_EXTRACT_URL || ""
+    if (!serviceUrl) {
+      return NextResponse.json({ status: "fail", error: "SERVICE_EXTRACT_URL is not defined" });
+    }
+
     const result = await axios.post(serviceUrl, resume, {
       headers: { 'Content-Type': 'application/json' }
     });
