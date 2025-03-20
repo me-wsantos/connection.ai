@@ -81,7 +81,7 @@ export const UploadResume = () => {
 
         const dataCareerPlan = await careerPlanService(result.data);
 
-        //console.log(dataCareerPlan.data);
+        console.log(dataCareerPlan.data);
 
         if (dataCareerPlan.status === "fail") {
           setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
