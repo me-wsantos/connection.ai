@@ -1,3 +1,4 @@
+export * from "./About";
 export * from "./ChatContainer";
 export * from "./GptMessage";
 export * from "./GptMessageAnalysis";

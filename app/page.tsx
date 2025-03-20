@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import useAppContext from "./context/appContext";
-import { Sidebar, ChatContainer, Profile, CareerPlan } from "./components";
+import { Sidebar, About, ChatContainer, Profile, CareerPlan } from "./components";
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 
@@ -38,10 +38,10 @@ export default function Home() {
             <div
               className={`flex flex-col flex-auto h-full p-1 ${moduleActive >= 2 ? 'overflow-y-auto' : 'overflow-hidden'} `}
             >
-              { /* moduleActive == 0 && <About /> */}
-              {moduleActive == 1 && <ChatContainer />}
-              {moduleActive == 2 && <Profile />}
-              {moduleActive == 3 && <CareerPlan />}
+              { moduleActive == 0 && <About /> }
+              { moduleActive == 1 && <ChatContainer /> }
+              { moduleActive == 2 && <Profile /> }
+              { moduleActive == 3 && <CareerPlan /> }
             </div>
           </div>
         </section>

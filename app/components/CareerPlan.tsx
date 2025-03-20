@@ -1,6 +1,6 @@
 "use client"
 import useAppContext from "../context/appContext";
-import { FaRegUser } from "react-icons/fa";
+import { SlGraph } from "react-icons/sl";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -13,7 +13,7 @@ export const CareerPlan = () => {
         <div className="h-auto flex flex-col p-0 w-100">
           <section className="h-full flex flex-col justify-start">
             <div className="h-full pb-0 flex justify-start items-end border-b-2">
-              <FaRegUser size={35} color={"#000"} className="mr-4 mb-[.4rem]" />
+              <SlGraph size={35} color={"#000"} className="mr-4 mb-[.4rem]" />
               <div
                 className="w-full p-0 text-custom-blue-100 text-xl items-end leading-normal font-bold text-start md:text-2xl">
                 Career Plan
