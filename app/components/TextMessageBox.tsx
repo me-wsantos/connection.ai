@@ -1,5 +1,5 @@
 "use client"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import useAppContext from "../context/appContext";
 import { IoIosSend } from "react-icons/io";
 
@@ -49,7 +49,7 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
             spellCheck={disableCorrections ? "true" : "false"}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-          //disabled={!resumeReady}
+            disabled={!resumeReady}
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export const TextMessageBox = ({ onSendMessage, placeholder, disableCorrections 
         <button
           type="submit"
           className={`flex justify-between items-center px-8 py-2 rounded-xl ${!resumeReady ? 'bg-gray-400' : 'bg-custom-blue'}`}
-        //disabled={!resumeReady}
+          disabled={!resumeReady}
         >
           <span className="text-white mr-2">Send</span>
           <IoIosSend color="white" size={20} />

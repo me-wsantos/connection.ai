@@ -19,7 +19,7 @@ export const CareerPlan = () => {
                 Career Plan
               </div>
             </div>
-            <div className="max-w-full flex mt-8 border">
+            <div className="max-w-full flex mt-8">
               <div className="max-w-full pr-12">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {careerPlan}

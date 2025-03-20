@@ -2,8 +2,6 @@ import axios from "axios";
 
 export const chatService = async ({ chat, perfil }: any) => {
 
-  console.log("chatService", {chat, perfil})
-
   try {
     const response = await axios.post("/api/chat", {chat, perfil}, {
       headers: {

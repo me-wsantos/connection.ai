@@ -4,8 +4,6 @@ import axios from "axios";
 export async function POST(request: NextRequest) {
   const { chat, perfil } = await request.json();
 
-  console.log("route", {chat, perfil})
-  
   if (!chat || !perfil) return NextResponse.json({ status: "fail", message: "Mensagem do usuário incompleta!" });
 
   try {
@@ -14,7 +12,7 @@ export async function POST(request: NextRequest) {
       headers: { 'Content-Type': 'application/json' }
     });
 
-    const response ={
+    const response = {
       role: "assistant",
       content: result.data
     }

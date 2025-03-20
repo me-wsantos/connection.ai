@@ -13,11 +13,6 @@ export const UploadResume = () => {
   const [message, setMessage] = useState({ type: "default", description: "" });
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-
-
-
-
   const {
     setModuleActive,
     setProfile,
@@ -31,11 +26,10 @@ export const UploadResume = () => {
     setChatMessages
   } = useAppContext();
 
-
   useEffect(() => {
     if (fileUpload && !isUploaded) {
       uploadFile(); // Call uploadFile only after fileUpload has been set
-      
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileUpload]);
@@ -99,11 +93,11 @@ export const UploadResume = () => {
         setChatMessages((prev: any) => [...prev, { role: "assistant", content: "I have received your resume. How can I help you?" }]);
 
         // Get career plan
-        const dataCareerPlan = await careerPlanService(result.data);
+        const dataCareerPlan: any = await careerPlanService(result.data);
 
         if (dataCareerPlan.status === "fail") {
-          setMessage({ ...message, type: "error", description: "An error occurred while uploading the file." });
-        } else {
+          setMessage({ ...message, type: "error", description: "An error occurred while creating career plan." });
+        } else if (dataCareerPlan.data) {
           setCareerPlan(dataCareerPlan.data.data);
         }
         setLoadingCareerPlan(false)
@@ -124,7 +118,6 @@ export const UploadResume = () => {
     }
 
     setIsLoading(false);
-
   }
 
   const handleMessage = () => {
