@@ -1,6 +1,7 @@
 "use client"
 
 import useAppContext from "../context/appContext";
+import Image from "next/image";
 import { SlGraph } from "react-icons/sl";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineHome } from "react-icons/hi2";
@@ -61,10 +62,12 @@ export function Sidebar() {
   return (
     <div className="hidden h-full lg:flex flex-col justify-between items-end max-w-7xl mx-auto">
       <nav className="flex-col ml-0 w-[400px] min-h-full bg-custom-blue px-0 pt-4">
-
-        <h4 className="font-bold text-lg text-white mt-4 mb-28  text-center lg:text-xl">
-          Connection.ai
-        </h4>
+        <div className="w-full flex flex-col justify-center items-center">
+          <Image src={"/images/logo.png"} width={50} height={50} alt="App logo" />
+          <h4 className="font-bold text-lg text-white mt-4 mb-28  text-center lg:text-xl">
+            Connection.ai
+          </h4>
+        </div>
 
         {menuItems.map((icon, index) => (
           renderMenu(icon.icon, icon.text, index)
