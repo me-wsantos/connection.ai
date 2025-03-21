@@ -3,7 +3,6 @@ import useAppContext from '../context/appContext';
 import { IoClose } from "react-icons/io5"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { menuItems } from './Sidebar';
-import ResponsiveSizes from './ResponsiveSizes';
 
 const NavbarMobile = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -16,7 +15,6 @@ const NavbarMobile = () => {
   return (
     <nav className="w-auto px-0 h-12 fixed top-0 right-0 left-0 z-10 p-3 mt-0 bg-custom-blue md:invisible lg:h-0">
       <div className="w-full flex justify-end px-6">
-        <ResponsiveSizes />
         <div className='flex justify-end py-0 px-2'>
           <div className="ml-4">
             {showMenu ?

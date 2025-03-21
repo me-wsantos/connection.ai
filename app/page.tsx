@@ -5,14 +5,12 @@ import { Sidebar, About, ChatContainer, Profile, CareerPlan, Interview } from ".
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineWebAsset } from "react-icons/md";
 import NavbarMobile from "./components/NavbarMobile";
-import ResponsiveSizes from "./components/ResponsiveSizes";
 
 export default function Home() {
   const { moduleActive } = useAppContext();
 
   return (
     <>
-            <ResponsiveSizes />
       <main className="h-screen w-full flex flex-row mt-0 bg-white overflow-hidden">
         <Sidebar />
         <section className="mx-3 sm:mx-20 flex flex-col w-full p-5 mt-4 rounded-3xl">
