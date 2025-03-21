@@ -149,7 +149,7 @@ export const UploadResume = () => {
                 onClick={handleDivClick}
               >
                 <FaFileUpload size={32} className="mb-4" />
-                <label className="text-xs text-center">
+                <label className="text-xs text-center hover:cursor-pointer">
                   {fileUpload != undefined ? "Change file" : "Upload resume"}
                 </label>
               </div>
