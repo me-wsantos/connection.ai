@@ -23,7 +23,7 @@ export const UploadResume = () => {
     setLoadingProfile,
     setLoadingCareerPlan,
     setLoadingInterview,
-    setChatMessages
+    setChatMessages,
   } = useAppContext();
 
   useEffect(() => {
@@ -129,19 +129,27 @@ export const UploadResume = () => {
     }
   }
 
+  const renderMessageUpload = () => {
+    return (
+      <div className="bg-blue-500 w-64 hover:bg-blue-700 text-white text-center pt-2 pb-1 rounded-full lg:w-80">
+        {isLoading ? <Loading value="Please wait..." /> : "Upload file"}
+      </div>
+    )
+  }
+
   if (!isUploaded) {
     return (
       <>
-        <div className="flex flex-col flex-shrink-0 rounded-2xl h-60 p-4 bg-blue-50">
+        <div className="flex flex-col flex-shrink-0 rounded-2xl h-36 p-4 bg-blue-50 lg:h-60">
           <div className="p-0 w-100 flex justify-center">
             <div className="p-0 flex flex-col justify-center items-center">
 
               <div
-                className="bg-cyan-600 w-32 h-32 hover:bg-cyan-700 text-white rounded-full flex flex-col justify-center items-center cursor-pointer"
+                className="bg-cyan-600 w-24 h-24 p-2 hover:bg-cyan-700 text-white rounded-full flex flex-col justify-center items-center cursor-pointer lg:w-24 lg:h-24"
                 onClick={handleDivClick}
               >
                 <FaFileUpload size={32} className="mb-4" />
-                <label className="text-xs">
+                <label className="text-xs text-center">
                   {fileUpload != undefined ? "Change file" : "Upload resume"}
                 </label>
               </div>
@@ -169,16 +177,8 @@ export const UploadResume = () => {
                 onChange={(e) => handleChangeFile(e)}
               />
 
-              {(isError && !isUploaded) && (
-                <button
-                  type="submit"
-                  onClick={uploadFile}
-                  className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
-                >
-                  {isLoading ? <Loading value="Please wait..." /> : "Upload file"}
-                </button>
-              )
-              }
+              {(isError && !isUploaded) && renderMessageUpload()}
+
             </div>
           </div>
         </div>
@@ -186,24 +186,18 @@ export const UploadResume = () => {
     )
   } else {
     return (
-      <div className="flex flex-col flex-shrink-0 rounded-2xl h-auto p-4 bg-blue-50">
+      <div className="flex flex-col flex-shrink-0 rounded-2xl h-auto p-0 lg:p-4 bg-blue-50">
         <div className="p-0 w-100 flex justify-start">
           <div className="p-0 flex justify-start items-center">
-            <div className="flex justify-center items-center mr-12">
+            <div className="flex justify-between items-center mr-6 lg:mr-12 lg:justify-center">
               <IoDocumentTextSharp size={25} color={"#E74C3C"} className="mr-2" />
               <span className="text-xs">{fileUpload != undefined ? fileUpload.name : "No file selected"}</span>
             </div>
             <div
-              className="w-auto py-1 px-4 mx-2  bg-blue-500 text-xs text-white text-center rounded hover:cursor-pointer"
+              className="w-24 py-1 px-4 mx-2 bg-blue-500 text-xs text-white text-center rounded hover:cursor-pointer"
               onClick={handleDivClick}
             >
               Change file
-            </div>
-            <div
-              className="w-auto py-1 px-4 mx-2  bg-blue-500 text-xs text-white text-center rounded hover:cursor-pointer"
-              onClick={() => setModuleActive(2)}
-            >
-              Show Profile
             </div>
 
             <input
@@ -214,16 +208,7 @@ export const UploadResume = () => {
               onChange={(e) => handleChangeFile(e)}
             />
 
-            {(isError && !isUploaded) && (
-              <button
-                type="submit"
-                onClick={uploadFile}
-                className="bg-blue-500 w-80 hover:bg-blue-700 text-white pt-2 pb-1 rounded-full"
-              >
-                {isLoading ? "Please wait..." : "Upload file"}
-              </button>
-            )
-            }
+            {(isError && !isUploaded) && renderMessageUpload()}
           </div>
         </div>
       </div>

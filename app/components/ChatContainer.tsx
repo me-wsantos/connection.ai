@@ -61,7 +61,11 @@ export const ChatContainer = () => {
       <div>
         <UploadResume />
       </div>
-      <div className="chat-messages" ref={scrollContainerRef}>
+      
+      <div 
+        className={`${isUploaded ? 'mt-0' : 'mt-24 lg:mt-6' } chat-messages`}
+        ref={scrollContainerRef}
+      >
         <div className="flex flex-col">
 
 
