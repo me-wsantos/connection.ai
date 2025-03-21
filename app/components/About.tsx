@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import Image from "next/image";
 import { RobotoRegular, RobotoBold } from "../fonts";
@@ -21,16 +22,15 @@ export const About = () => {
                 <Image src={"/images/logo.png"} width={120} height={120} alt="App logo" />
                 <h2 className={`${RobotoBold} text-3xl font-extrabold text-custom-blue tracking-wide`}>Connection.ai</h2>
                 <h2 className={`${RobotoRegular} text-base text-center mt-4 text-custom-blue tracking-wide`}>Revolutionizing Recruitment with AI</h2>
-                {/* <div className="text-base text-justify mt-6">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolores beatae perferendis suscipit itaque nobis aliquid magnam est molestiae perspiciatis voluptatibus hic consequatur necessitatibus expedita voluptate, neque dolor tenetur explicabo.
-                </div> */}
+
+                <div className="mt-12">
+                  <Link
+                    href="https://github.com/me-wsantos/hackathon-ms/blob/main/README.md"
+                    title="Project Readme"
+                    target="_blank"
+                    className="px-4 py-2 text-blue-500 rounded-full hover:bg-blue-500 hover:text-white hover:cursor-pointer"
+                  >Project Readme</Link>
+                </div>
               </div>
             </div>
           </section>

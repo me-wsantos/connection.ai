@@ -34,6 +34,7 @@ const NavbarMobile = () => {
           {menuItems.map((data, i) => (
             
               <div 
+                key={i}
                 className="w-full text-base text-end text-white py-2 hover:text-blue-300"
                 onClick={() => [setModuleActive(i), setShowMenu(false)]}
               >

@@ -18,7 +18,6 @@ export const AppContextProvider = ({ children }: any) => {
   const [loadingProfile, setLoadingProfile] = useState(false)
   const [loadingCareerPlan, setLoadingCareerPlan] = useState(false)
   const [loadingInterview, setLoadingInterview] = useState(false)
-  const [analyzingResume, setAnalyzingResume]= useState(false)
   const [chatMessages, setChatMessages] = useState<IMessage[]>([{
     role: "assistant",
     content: "Hello! Please upload a resume so I can analyze it."
